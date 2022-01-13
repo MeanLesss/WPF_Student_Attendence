@@ -1,0 +1,181 @@
+﻿<Window x:Class="WPF_Student_Attendence.SignUpWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_Student_Attendence"
+        mc:Ignorable="d"
+        Title="SignUpWindow" MaxHeight="665" MaxWidth="450" MinHeight="665" MinWidth="450" Height="677" WindowStyle="None" WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <Style TargetType="{x:Type GroupBox}">
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+        
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="Margin" Value="0,15,0,0"/>
+            <Setter Property="Foreground" Value="white"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+        
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Width" Value="400"/>
+            <Setter Property="Height" Value="30"/>
+        </Style>
+
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0,1" StartPoint="0.5,0">
+                <LinearGradientBrush.RelativeTransform>
+                    <TransformGroup>
+                        <ScaleTransform CenterY="0.2" CenterX="1"/>
+                        <SkewTransform CenterY="0.2" CenterX="1"/>
+                        <RotateTransform CenterY="0.2" CenterX="1"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </LinearGradientBrush.RelativeTransform>
+                <GradientStop Color="#FFD92FFF" Offset="1"/>
+                <GradientStop Color="#FF1F69D4" Offset="0"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <StackPanel>
+            <GroupBox BorderThickness="0">
+                <StackPanel Orientation="Horizontal">
+                    <fa:IconBlock Icon="Times" FontSize="25" Foreground="White" Margin="10,10,10,15" MouseLeftButtonDown="IconBlock_MouseLeftButtonDown"/>
+                    <fa:IconBlock Icon="Minus" FontSize="25" Foreground="White" MouseLeftButtonDown="IconBlock_MouseLeftButtonDown_1" />
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox  Header="Sign Up" 
+                   FontFamily="Bernard MT Condensed" 
+                   FontSize="30" Foreground="White" 
+                   Margin="10,0,10,0">
+
+                <StackPanel Orientation="Vertical" Margin="5,5,5,5">
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label HorizontalContentAlignment="Left" 
+                       VerticalContentAlignment="Center" 
+                       FontWeight="Normal">New username</Label>
+                        <Label Name="StarUsername" Content="*" Foreground="Red"/>
+                    </StackPanel>
+                    <TextBox x:Name="TextBox_NewUsername"/>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label>
+                            New password
+                        </Label>
+
+                        <Label Name="StarNewPassword" Content="*" Foreground="Red"/>
+                    </StackPanel>
+
+                    <PasswordBox x:Name="PassBox_Newpassword" 
+                             Width="400" 
+                             Height="30"
+                             FontFamily="Segoe UI"
+                             FontSize="16"/>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label>
+                            Confirm new password
+                        </Label>
+                        <Label Name="StarConfirmPassword" Content="*" Foreground="Red"/>
+                    </StackPanel>
+
+                    <PasswordBox x:Name="ConfirmPassword" 
+                             Width="400"
+                             Height="30"
+                             FontFamily="Segoe UI"
+                             FontSize="16"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Label>
+                            Phone number
+                        </Label>
+                        <Label Name="StarPhoneNumber" Content="*" Foreground="Red"/>
+                    </StackPanel>
+
+                    <TextBox x:Name="PhoneNumber" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label>
+                            Security question
+                        </Label>
+                        <Label Name="StarSecQuestion" Content="*" Foreground="Red"/>
+                    </StackPanel>
+
+                    <ComboBox x:Name="SecurityQuestion" Width="400" Height="30" Padding="6,3,8,3">
+                        <TextBlock Foreground="Black">Who is your favorite ex?</TextBlock>
+                        <TextBlock Foreground="Black">Who is your crush?</TextBlock>
+                        <TextBlock Foreground="Black">What is your favorite animal?</TextBlock>
+                        <TextBlock Foreground="Black">What is your favorite song title?</TextBlock>
+                        <TextBlock Foreground="Black">What is your favorite drink?</TextBlock>
+                        <TextBlock Foreground="Black">What is your pet name?</TextBlock>
+                    </ComboBox>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label>
+                            Security answer
+                        </Label>
+                        <Label Name="StarAnswer" Content="*" Foreground="Red"/>
+                    </StackPanel>
+
+                    <TextBox x:Name="SecurityAnswer"/>
+
+                    <Grid Margin="5,15,5,5">
+                        <Button x:Name="ButtonCancel"
+                            Width="140"
+                            Height="40"
+                            FontSize="20"
+                            Foreground="White"
+                            HorizontalAlignment="Left" 
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}" Click="ButtonCancel_Click">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <fa:IconBlock Icon="Times" />
+                                    <TextBlock FontFamily="ROG Fonts" Margin="5,0,0,0">
+                                        Cancel
+                                    </TextBlock>
+                                </StackPanel>
+
+                            </Button.Content>
+
+                        </Button>
+
+                        <Button x:Name="ButtonRegister"
+                            Width="140"
+                            Height="40"
+                            FontSize="20"
+                            Foreground="White"
+                            HorizontalAlignment="Right" 
+                            Background="{x:Null}"
+                            BorderBrush="White" Click="ButtonRegister_Click">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <fa:IconBlock Icon="UserPlus" />
+
+                                    <TextBlock FontFamily="ROG Fonts" Margin="5,0,0,0">
+                                        Register
+                                    </TextBlock>
+                                </StackPanel>
+
+                            </Button.Content>
+
+                        </Button>
+                    </Grid>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+</Window>
