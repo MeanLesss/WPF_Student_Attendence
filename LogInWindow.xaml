@@ -64,17 +64,21 @@
 
                             <PasswordBox Name="BoxPassword"
                                      Width="300" VerticalContentAlignment="Center" BorderThickness="0,0,0,3" Background="Transparent"/>
-
+                           
                             <Button Name="Button_eyeSlash" 
                                 Content="{fa:Icon EyeSlash}" 
                                 Width="40" Height="20" 
                                 HorizontalAlignment="Right" 
-                                Background="Transparent" BorderBrush="White" Click="Button_eyeSlash_Click" BorderThickness="0,0,0,0"/>
+                                Background="Transparent" BorderBrush="White"
+                                Click="Button_eyeSlash_Click" BorderThickness="0,0,0,0"/>
 
-                            <Button Name="Button_eye" Content="{fa:Icon Eye}" 
+                            <Button Name="Button_eye" 
+                                    Content="{fa:Icon Eye}" 
                                 Width="40" Height="20" 
                                 HorizontalAlignment="Right"
-                                Background="Transparent" BorderBrush="White" Click="Button_eye_Click"  BorderThickness="0,0,0,0"/>
+                                Background="Transparent" BorderBrush="White" 
+                                    Click="Button_eye_Click"  BorderThickness="0,0,0,0"/>
+
                         </Grid>
 
 

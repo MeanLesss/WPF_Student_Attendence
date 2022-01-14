@@ -45,5 +45,17 @@ namespace WPF_Student_Attendence
         {
             this.WindowState = WindowState.Minimized;
         }
+
+        private void Button_SignOut_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = new MainWindow();
+            main.Show();
+            this.Close();
+        }
+
+        private void DataGridView_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
+        {
+
+        }
     }
 }

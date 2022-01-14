@@ -25,6 +25,7 @@ namespace WPF_Student_Attendence
         public MainWindow()
         {
             InitializeComponent();
+            Button_eyeSlash.Visibility = Visibility.Collapsed;
         }
 
         private void WrapPanel_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
@@ -80,7 +81,7 @@ namespace WPF_Student_Attendence
 
         private void Button_eyeSlash_Click(object sender, RoutedEventArgs e)
         {
-            BoxPassword.Password = RevealPass.Text;
+            BoxPassword.Password = RevealPass.Text; 
             Button_eyeSlash.Visibility = Visibility.Collapsed;
             Button_eye.Visibility = Visibility.Visible;
             BoxPassword.Visibility = Visibility.Visible;

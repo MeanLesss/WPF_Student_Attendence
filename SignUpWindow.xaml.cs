@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -44,6 +45,12 @@ namespace WPF_Student_Attendence
         private void IconBlock_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
+        }
+
+        private void PhoneNumber_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regg = new Regex(@"\d");
+            e.Handled = !regg.IsMatch(e.Text);
         }
     }
 }

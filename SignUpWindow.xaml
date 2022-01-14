@@ -70,7 +70,7 @@
                        FontWeight="Normal">New username</Label>
                         <Label Name="StarUsername" Content="*" Foreground="Red"/>
                     </StackPanel>
-                    <TextBox x:Name="TextBox_NewUsername"/>
+                    <TextBox x:Name="TextBox_NewUsername" VerticalContentAlignment="Center"/>
 
                     <StackPanel Orientation="Horizontal">
                         <Label>
@@ -84,7 +84,7 @@
                              Width="400" 
                              Height="30"
                              FontFamily="Segoe UI"
-                             FontSize="16"/>
+                             FontSize="16" VerticalAlignment="Stretch" VerticalContentAlignment="Center"/>
 
                     <StackPanel Orientation="Horizontal">
                         <Label>
@@ -97,7 +97,7 @@
                              Width="400"
                              Height="30"
                              FontFamily="Segoe UI"
-                             FontSize="16"/>
+                             FontSize="16" VerticalContentAlignment="Center"/>
                     <StackPanel Orientation="Horizontal">
                         <Label>
                             Phone number
@@ -105,7 +105,7 @@
                         <Label Name="StarPhoneNumber" Content="*" Foreground="Red"/>
                     </StackPanel>
 
-                    <TextBox x:Name="PhoneNumber" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="PhoneNumber" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" PreviewTextInput="PhoneNumber_PreviewTextInput"/>
 
                     <StackPanel Orientation="Horizontal">
                         <Label>
@@ -114,7 +114,7 @@
                         <Label Name="StarSecQuestion" Content="*" Foreground="Red"/>
                     </StackPanel>
 
-                    <ComboBox x:Name="SecurityQuestion" Width="400" Height="30" Padding="6,3,8,3">
+                    <ComboBox x:Name="SecurityQuestion" Width="400" Height="30" Padding="6,3,8,3" VerticalContentAlignment="Center">
                         <TextBlock Foreground="Black">Who is your favorite ex?</TextBlock>
                         <TextBlock Foreground="Black">Who is your crush?</TextBlock>
                         <TextBlock Foreground="Black">What is your favorite animal?</TextBlock>
@@ -130,7 +130,7 @@
                         <Label Name="StarAnswer" Content="*" Foreground="Red"/>
                     </StackPanel>
 
-                    <TextBox x:Name="SecurityAnswer"/>
+                    <TextBox x:Name="SecurityAnswer" VerticalContentAlignment="Center"/>
 
                     <Grid Margin="5,15,5,5">
                         <Button x:Name="ButtonCancel"
