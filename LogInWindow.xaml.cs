@@ -21,11 +21,22 @@ namespace WPF_Student_Attendence
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Teacher teacher = new Teacher();
+        private ManageTeacher manageTeacher = new ManageTeacher();
+        private bool correct;
         private SignUpWindow signUpWindow = new SignUpWindow();
+        public bool IsLogin { get; set; } = false;
+
+
         public MainWindow()
         {
             InitializeComponent();
             Button_eyeSlash.Visibility = Visibility.Collapsed;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            manageTeacher.LoadData();
         }
 
         private void WrapPanel_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
@@ -105,6 +116,54 @@ namespace WPF_Student_Attendence
         private void IconBlockMinimise_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
+        }
+
+        private bool Authentication()
+        {
+            manageTeacher.LoadData();
+
+
+            Teacher teacher = manageTeacher.Teachers.Find(
+            t => t.Username == BoxUsername.Text &&
+            t.Username == BoxPassword.Password);
+            correct = true;
+
+            if (BoxUsername.Text == teacher.Username &&
+                BoxPassword.Password == teacher.Username)
+            {
+                correct = true;
+            }
+            else
+            {
+                correct = false;
+            }
+
+            return correct;
+
+        }
+
+        private void Button_SignIn_Click(object sender, RoutedEventArgs e)
+        {
+            Teacher teacher = manageTeacher.Teachers.Find(
+               t => t.Username == BoxUsername.Text &&
+               t.Password == BoxPassword.Password ||
+               t.Username == BoxUsername.Text &&
+               t.Password == RevealPass.Text);
+
+            BoxUsername.Clear();
+            BoxPassword.Clear();
+            RevealPass.Clear();
+
+            if (teacher != null)
+            {
+                IsLogin = true;
+                new DashboardWindow(teacher).Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("User not found!", "Log in failed");
+            }
         }
     }
 }

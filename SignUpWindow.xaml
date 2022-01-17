@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Student_Attendence"
         mc:Ignorable="d"
-        Title="SignUpWindow" MaxHeight="665" MaxWidth="450" MinHeight="665" MinWidth="450" Height="677" WindowStyle="None" WindowStartupLocation="CenterScreen">
+        Title="SignUpWindow" MaxHeight="665" MaxWidth="450" MinHeight="665" MinWidth="450" Height="677" WindowStyle="None" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
 
     <Window.Resources>
         <Style TargetType="{x:Type GroupBox}">

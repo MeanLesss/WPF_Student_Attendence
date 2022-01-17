@@ -18,6 +18,10 @@ namespace WPF_Student_Attendence
 {
 }
 
+namespace WPF_Student_Attendence
+{
+}
+
 namespace WPF_Student_Attendence.AppDataTableAdapters {
     
     

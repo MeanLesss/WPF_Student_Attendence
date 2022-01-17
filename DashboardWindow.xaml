@@ -7,10 +7,12 @@
         xmlns:local="clr-namespace:WPF_Student_Attendence"
         xmlns:OleDb="clr-namespace:System.Data.OleDb;assembly=System.Data.OleDb" x:Class="WPF_Student_Attendence.DashboardWindow"
         mc:Ignorable="d"
-        Title="DashboardWindow" MinHeight="450" MinWidth="800" MaxHeight="450" MaxWidth="800" WindowStyle="None" WindowStartupLocation="CenterScreen">
+        Title="DashboardWindow" MinHeight="450" MinWidth="800" MaxHeight="450" MaxWidth="800" WindowStyle="None" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+
     <Window.DataContext>
-        <local:AppData/>
+        <local:Attendance/>
     </Window.DataContext>
+    
     
     <DockPanel LastChildFill="False">
         <DockPanel.Background>
@@ -36,7 +38,7 @@
                 <!--profile part top-->
 
                 <fa:IconBlock Icon="UserCircle" DockPanel.Dock="Top" Width="200" Height="90" FontSize="80" Foreground="Black"/>
-                <Label Content="Username" HorizontalContentAlignment="Center" FontSize="18" VerticalAlignment="Bottom" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" />
+                <Label Name="lbUsername" Content="Username" HorizontalContentAlignment="Center" FontSize="18" VerticalAlignment="Bottom" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" />
 
                 <!--Button part body-->
                 <Button x:Name="Button_Attendance" 
@@ -124,7 +126,7 @@
             </ComboBox>
              
             <!--Submit the choosen selection-->
-            <Button Name="ButtonSubmit" Content="Submit" Grid.Row="1" Grid.Column="3" Width="80" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Button Name="ButtonSubmit" Content="Submit" Grid.Row="1" Grid.Column="3" Width="80" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" Click="ButtonSubmit_Click"/>
 
         </Grid>
         <!--Data grid to view data-->
@@ -139,30 +141,27 @@
                   FrozenColumnCount="5" 
                   AutoGenerateColumns="False" 
                   Height="323"
-                  BeginningEdit="DataGridView_BeginningEdit"
                   AlternatingRowBackground="LightGray"
                   IsReadOnly="False">
            
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Width="50" Binding="{Binding ID}" />
+                <DataGridTextColumn Header="ID" Width="50" Binding="{Binding Path=Teacher.Name}" />
                 <DataGridTextColumn Header="Avatar" Width="100" Binding="{Binding Avatar}"/>
-                <DataGridTextColumn Header="Name" Width="150" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Name" Width="150" Binding="{Binding Path=Name}"/>
                 <!--column combobox-->
                 <DataGridTemplateColumn Header="Status" Width="90">
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
-                            <ComboBox SelectedItem="{Binding Path=Status}">
-                                <ComboBoxItem Content="Absent"/>
-                                <ComboBoxItem Content="Late"/>
-                                <ComboBoxItem Content="Present"/>
+                            <ComboBox>
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding Path=Status}"/>
+                                        <TextBlock Text="adhlhks"/>
                                     </DataTemplate>
                                 </ComboBox.ItemTemplate>
                             </ComboBox>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
+
                 </DataGridTemplateColumn>
 
                 <DataGridTextColumn Header="Remark" Width="180" Binding="{Binding Remark}"/>
