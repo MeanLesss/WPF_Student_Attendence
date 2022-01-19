@@ -122,7 +122,6 @@ namespace WPF_Student_Attendence
         {
             manageTeacher.LoadData();
 
-
             Teacher teacher = manageTeacher.Teachers.Find(
             t => t.Username == BoxUsername.Text &&
             t.Username == BoxPassword.Password);
@@ -164,6 +163,13 @@ namespace WPF_Student_Attendence
             {
                 MessageBox.Show("User not found!", "Log in failed");
             }
+        }
+
+        private void ForgetPassword_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            ForgetPasswordWindow forgetWindow = new ForgetPasswordWindow();
+            forgetWindow.Show();
+            this.Close();
         }
     }
 }

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WPF_Student_Attendence"
         xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         mc:Ignorable="d"
-        Title="Login" Height="450" Width="800" MinHeight="450" MinWidth="400" MaxHeight="450" MaxWidth="800" WindowStyle="None" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" >
+        Title="Login" Height="450" Width="800" MinHeight="450" MinWidth="400" MaxHeight="450" MaxWidth="800" WindowStyle="None" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" IsTabStop="True">
     <Window.Resources>
         <Style TargetType="{x:Type GroupBox}">
             <Setter Property="FontSize" Value="20"/>
@@ -55,15 +55,22 @@
                 <GroupBox.Content>
                     <StackPanel HorizontalAlignment="Center"  >
                         <Label Name="lbUsername" Content="Username" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
-                        
-                        <TextBox x:Name="BoxUsername" Width="300" BorderThickness="0,0,0,3" Background="Transparent"/>
+
+                        <TextBox x:Name="BoxUsername" Width="300" BorderBrush="White" BorderThickness="0,0,0,3" Background="Transparent"/>
                         
                         <Label Content="Password" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
                         <Grid>
-                            <TextBox x:Name="RevealPass" VerticalContentAlignment="Center" BorderThickness="0,0,0,3" Background="Transparent"/>
+                            <TextBox x:Name="RevealPass" 
+                                     VerticalContentAlignment="Center"
+                                     BorderThickness="0,0,0,3" 
+                                     Background="Transparent"
+                                     IsTabStop="False"/>
 
                             <PasswordBox Name="BoxPassword"
-                                     Width="300" VerticalContentAlignment="Center" BorderThickness="0,0,0,3" Background="Transparent"/>
+                                         Width="300" VerticalContentAlignment="Center"
+                                         BorderBrush="White" 
+                                         BorderThickness="0,0,0,3" 
+                                         Background="Transparent" IsTabStop="True" />
                            
                             <Button Name="Button_eyeSlash" 
                                 Content="{fa:Icon EyeSlash}" 
@@ -132,10 +139,8 @@
 
                         </Grid>
 
-                        <Label x:Name="ForgetPassword"  FontStyle="Oblique" MouseEnter="ForgetPassword_MouseEnter" MouseLeave="ForgetPassword_MouseLeave">
-                            <Hyperlink Foreground="White">
-                                Forget password?
-                            </Hyperlink>
+                        <Label x:Name="ForgetPassword"  FontStyle="Oblique" MouseEnter="ForgetPassword_MouseEnter" MouseLeave="ForgetPassword_MouseLeave" MouseLeftButtonDown="ForgetPassword_MouseLeftButtonDown" >
+                            Forget password?
                         </Label>
                     </StackPanel>
                 </GroupBox.Content>
