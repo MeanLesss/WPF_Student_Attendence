@@ -10,6 +10,8 @@ namespace WPF_Student_Attendence
 {
     public class Attendance:INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         DashboardWindow dashboard;
         public Attendance()
         {
@@ -18,10 +20,9 @@ namespace WPF_Student_Attendence
 
         public int No { get; set; } = 0;
         public Image Avatar { get; set; } = Properties.Resources.wine_glass;
+
+
         private string _path = "wine_glass.jpg";
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
         public string Path
         {
             get => _path;
@@ -30,23 +31,73 @@ namespace WPF_Student_Attendence
                 _path = value;
                 try { Avatar = Image.FromFile(_path); } catch { }
             }
-
         }
 
-        public string Name { get; set; } = "Sokvimean";
+        string name;
+        public string Name 
+        {
+            get => name;
+            set
+            {
+                name = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Name)));
+            } 
+        }
+
+        string status;
         public string Status
         {
-            get;
-            set;
+            get =>status;
+            set
+            {
+                status = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Status)));
+            }
+        }
 
-        }/* = "Present";*/= "Present";
         string remark=" ";
-        public string Remark { get=>remark; set {
+        public string Remark 
+        {
+            get => remark;
+
+            set 
+            {
                 remark = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Remark))); /// use prpopertychangeevent on all property to invoke everychange
-            } }
-        public string Subject { get; set; }
-        public int Session { get; set; }
-        public DateTime Date { get; set; }
+            } 
+        }
+
+        string subject;
+        public string Subject
+        { 
+            get => subject;
+            set
+            {
+                subject = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Subject)));
+            }
+        }
+
+        int session;
+        public int Session
+        {
+            get => session;
+            set
+            {
+                session = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Session)));
+            }
+        }
+
+        DateTime date;
+        public DateTime Date 
+        {
+            get => date; 
+            set
+            {
+                date = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Date)));
+            }
+        }
     }
 }

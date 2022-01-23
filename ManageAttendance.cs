@@ -6,6 +6,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
+
 
 namespace WPF_Student_Attendence
 {
@@ -16,13 +18,11 @@ namespace WPF_Student_Attendence
         readonly string filename = "mean_attendance.csv";
 
         public string TeacherName { get; set; } = "";
-
         public ManageAttendance(string teacherName)
         {
             TeacherName = teacherName;
             filename = teacherName + "_" + filename;
         }
-
         private Image LoadImage(string path)
         {
             try
@@ -36,10 +36,10 @@ namespace WPF_Student_Attendence
             }
         }
 
-        public void LoadData() //change this to list and turn some property to test
+        public ObservableCollection<Attendance> LoadHistory() //change this to list and turn some property to test
         {
-            var Dir = @"D:\IT STEP ACADEMY\Fundamentals of applications development with Window form\Homework\WPF Homework\Project\WPF_Student_Attendence\bin\Debug\net5.0-windows\Student_list.csv";
-            if (!File.Exists(filename)) return;
+            var Dir = @"D:\IT STEP ACADEMY\Fundamentals of applications development with Window form\Homework\WPF Homework\Project\WPF_Student_Attendence\bin\Debug\net5.0-windows\mean_attendance.csv";
+            if (!File.Exists(filename)) ;
             var ts = from t in File.ReadAllLines(filename).Skip(1)
                      let x = t.Split(',')
                      select new Attendance
@@ -48,9 +48,9 @@ namespace WPF_Student_Attendence
                          Name = x[1],
                          Status = x[2],
                          Remark = x[3],
-                         /*Subject = x[4],
+                         Subject = x[4],
                          Session = int.Parse(x[5]),
-                         Date = DateTime.Parse(x[6])*/
+                         Date = DateTime.Parse(x[6])
                      };
             attendances.Clear();
             int i = 1;
@@ -59,6 +59,7 @@ namespace WPF_Student_Attendence
                 t.No = i++;
                 attendances.Add(t);
             }
+            return attendances;
         }
 
         //public List<Attendance> ListAttendance { get; set; } = LoadAttendances();
@@ -66,7 +67,7 @@ namespace WPF_Student_Attendence
         public ObservableCollection<Attendance> LoadStudents()  //////////////// edit Atteendance.cs properties //////////////
         {
             var Dir = @"D:\IT STEP ACADEMY\Fundamentals of applications development with Window form\Homework\WPF Homework\Project\WPF_Student_Attendence\bin\Debug\net5.0-windows\Student_list.csv";
-            var list = new List<Attendance>();
+
             if (!File.Exists(Dir)) ;
             var ts = from t in File.ReadAllLines(Dir).Skip(1)
                      let x = t.Split(',')
@@ -76,25 +77,24 @@ namespace WPF_Student_Attendence
                          Name = x[1],
                          Status = x[2],
                          Remark = x[3],
-                         /*Subject = x[4],
+                         Subject = x[4],
                          Session = int.Parse(x[5]),
-                         Date = DateTime.Parse(x[6])*/
+                         Date = DateTime.Parse(x[6])
                      };
-            list.Clear();
+
             int i = 1;
             attendances.Clear();
             foreach (var t in ts)
             {
                 t.No = i++;
-                list.Add(t);
                 attendances.Add(t);
             }
-            return attendances; 
+            return attendances;
         }
 
         public void SaveData() //////// no change 
         {
-            using (var fs = new FileStream(filename, FileMode.Create|FileMode.Append))
+            using (var fs = new FileStream(filename, FileMode.Create))
             {
                 using (var sw = new StreamWriter(fs))
                 {

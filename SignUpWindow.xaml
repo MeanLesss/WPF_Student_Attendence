@@ -160,7 +160,7 @@
                             Foreground="White"
                             HorizontalAlignment="Right" 
                             Background="{x:Null}"
-                            BorderBrush="White" Click="ButtonRegister_Click">
+                            BorderBrush="White" Click="ButtonRegister_Click" IsDefault="True">
                             <Button.Content>
                                 <StackPanel Orientation="Horizontal">
                                     <fa:IconBlock Icon="UserPlus" />

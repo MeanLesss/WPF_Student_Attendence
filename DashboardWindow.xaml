@@ -42,7 +42,7 @@
                 <Button x:Name="Button_Attendance" 
                         Height="50"
                         FontSize="16"
-                        Background="LightGray">
+                        Background="LightGray" Click="Button_Attendance_Click">
 
                     <Grid Width="220">
                         <fa:IconBlock Icon="Tasks" FontSize="18" HorizontalAlignment="Left"/>
@@ -53,7 +53,8 @@
                 <Button x:Name="Button_EditProfile" 
                         Height="50"
                         FontSize="16"
-                        Background="LightGray">
+                        Background="LightGray" 
+                        Click="Button_EditProfile_Click">
                     <Grid Width="220">
                         <fa:IconBlock Icon="Cogs" FontSize="18" HorizontalAlignment="Left"/>
                         <Label Content="Reset password" HorizontalAlignment="Center"/>
@@ -84,68 +85,109 @@
         </Grid>
 
         <!--Grid contain subject date session selection-->
-        <Grid DockPanel.Dock="Top" Height="75">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+        <StackPanel Name="AttandancePanel" Visibility="Collapsed">
+            <Grid DockPanel.Dock="Top" Height="75">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
-            <!--Subject seclection part-->
-            <Label Content="Subject" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="16,0,0,0"/>
-            <ComboBox Name="ComboSubject" Grid.Row="1" Width="100" Height="20" VerticalAlignment="Top">
-                <ComboBoxItem Content="C#"/>
-                <ComboBoxItem Content="C++"/>
-                <ComboBoxItem Content="HTML"/>
-                <ComboBoxItem Content="CSS"/>
-                <ComboBoxItem Content="WPF"/>
-                <ComboBoxItem Content="WINFORM"/>
-            </ComboBox>
+                <!--Subject seclection part-->
+                <Label Content="Subject" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="16,0,0,0"/>
+                <ComboBox Name="ComboSubject" Grid.Row="1" Width="100" Height="20" VerticalAlignment="Top" >
 
-            <!--Date seclection part-->
-            <Label Content="Date" Grid.Column="1" Margin="12,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-            <DatePicker Name="PickDate" Grid.Column="1" Width="120" Height="26" VerticalAlignment="Top" BorderThickness="0,0,0,0" Margin="16,37,16,0" Grid.RowSpan="2"/>
+                    <ComboBoxItem Content="C#"/>
+                    <ComboBoxItem Content="C++"/>
+                    <ComboBoxItem Content="HTML"/>
+                    <ComboBoxItem Content="CSS"/>
+                    <ComboBoxItem Content="WPF"/>
+                    <ComboBoxItem Content="WINFORM"/>
+                </ComboBox>
 
-            <!--Session selection part-->
-            <Label Content="Session" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="16,0,0,0"/>
+                <!--Date seclection part-->
+                <Label Content="Date" Grid.Column="1" Margin="12,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <DatePicker Name="PickDate" Grid.Column="1" Width="120" Height="26" VerticalAlignment="Top" BorderThickness="0,0,0,0" Margin="16,37,16,0" Grid.RowSpan="2"/>
 
-            <ComboBox Name="ComboSession" Grid.Column="2" Grid.Row="1" Width="100" Height="20" VerticalAlignment="Top">
-                <ComboBoxItem Content="1"/>
-                <ComboBoxItem Content="2"/>
-                <ComboBoxItem Content="3"/>
-                <ComboBoxItem Content="4"/>
-                <ComboBoxItem Content="5"/>
-                <ComboBoxItem Content="6"/>
-            </ComboBox>
+                <!--Session selection part-->
+                <Label Content="Session" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="16,0,0,0"/>
 
-            <!--Submit the choosen selection-->
-            <Button Name="ButtonSubmit" Content="Submit" 
+                <ComboBox Name="ComboSession" Grid.Column="2" Grid.Row="1" Width="100" Height="20" VerticalAlignment="Top">
+                    <ComboBoxItem Content="1"/>
+                    <ComboBoxItem Content="2"/>
+                    <ComboBoxItem Content="3"/>
+                    <ComboBoxItem Content="4"/>
+                    <ComboBoxItem Content="5"/>
+                    <ComboBoxItem Content="6"/>
+                </ComboBox>
+
+                <CheckBox Name="CheckBoxHistory"
+                      Grid.Row="0" Grid.Column="3" 
+                      Content="Check history"  
+                      HorizontalAlignment="Left"
+                      VerticalAlignment="Center"
+                      Margin="16,0,0,0"/>
+                <!--Submit the choosen selection-->
+                <Button Name="ButtonSubmit" Content="Submit" 
                     Grid.Row="1" Grid.Column="3" Width="80"
                     Height="20" HorizontalAlignment="Center"
                     VerticalAlignment="Top"
                     Click="ButtonSubmit_Click"/>
 
-        </Grid>
-        <!--Data grid to view data ItemsSource="{Binding ListAttendance}"-->
-        <DataGrid Name="DG" 
+            </Grid>
+            <!--Data grid to view data ItemsSource="{Binding ListAttendance}"-->
+            <DataGrid Name="DG" 
                   Opacity="0.5"
-                  AutoGenerateColumns="False" CellEditEnding="DG_CellEditEnding" ManipulationCompleted="DG_ManipulationCompleted" SourceUpdated="DG_SourceUpdated">
+                  AutoGenerateColumns="False"
+                  SourceUpdated="DG_SourceUpdated">
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding No,Mode=TwoWay,NotifyOnSourceUpdated=True}" Width="60"/>
+                    <DataGridTextColumn Header="Avatar" Binding="{Binding Path,Mode=TwoWay,NotifyOnSourceUpdated=True}" Width="160"/>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name,Mode=TwoWay,NotifyOnSourceUpdated=True}" Width="160"/>
+                    <DataGridTextColumn Header="Status" Binding="{Binding Status,Mode=TwoWay,NotifyOnSourceUpdated=True}" Width="100"/>
+                    <DataGridTextColumn Header="Remark" Binding="{Binding Remark,Mode=TwoWay,NotifyOnSourceUpdated=True}" Width="100"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+        
+        <!--reset password panel part-->
+        <StackPanel Name="ResetPasswordPanel" 
+                    Width="566" Height="400"
+                    Orientation="Vertical">
+
+            <Label Content="Old Password" HorizontalContentAlignment="Left" Foreground="White"/>
+            <PasswordBox x:Name="OldPassword" 
+                         Width="300" Height="30" 
+                         HorizontalContentAlignment="Left" 
+                         VerticalContentAlignment="Center"/>
+
+            <Label Content="New Password" HorizontalContentAlignment="Left" Foreground="White" />
+            <PasswordBox x:Name="NewPassword" 
+                         Width="300" Height="30" 
+                         HorizontalContentAlignment="Left" 
+                         VerticalContentAlignment="Center"/>
+
+            <Label Content="Confirm New Password" HorizontalContentAlignment="Left" Foreground="White"/>
+            <PasswordBox x:Name="ConfirmNewPassword" 
+                         Width="300" Height="30" 
+                         HorizontalContentAlignment="Left" 
+                         VerticalContentAlignment="Center"/>
             
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding No}" Width="60"/>
-                <DataGridTextColumn Header="Avatar" Binding="{Binding Path}" Width="160"/>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="160"/>
-                <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="100"/>
-                <DataGridTextColumn Header="Remark" Binding="{Binding Remark,Mode=TwoWay,NotifyOnSourceUpdated=True}" Width="100"/>
-            </DataGrid.Columns>
-        </DataGrid>
-
-
+            <Button x:Name="SubmitChange" 
+                    Content="Save Change"
+                    Width="120" Height="30" 
+                    Click="SubmitChange_Click"
+                    Background="Transparent"
+                    Foreground="Red"
+                    FontFamily="ROG Fonts" HorizontalAlignment="Center"
+                    Margin="190,10,0,0"/>
+        </StackPanel>
 
     </DockPanel>
 </Window>

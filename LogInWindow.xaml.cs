@@ -118,13 +118,14 @@ namespace WPF_Student_Attendence
             this.WindowState = WindowState.Minimized;
         }
 
-        private bool Authentication()
+        /*private bool Authentication()
         {
             manageTeacher.LoadData();
 
             Teacher teacher = manageTeacher.Teachers.Find(
             t => t.Username == BoxUsername.Text &&
             t.Username == BoxPassword.Password);
+
             correct = true;
 
             if (BoxUsername.Text == teacher.Username &&
@@ -139,7 +140,7 @@ namespace WPF_Student_Attendence
 
             return correct;
 
-        }
+        }*/
 
         private void Button_SignIn_Click(object sender, RoutedEventArgs e)
         {

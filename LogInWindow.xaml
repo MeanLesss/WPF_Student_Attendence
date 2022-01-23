@@ -125,7 +125,8 @@
                                 VerticalAlignment="Top"
                                 BorderBrush="White" 
                                 Background="{x:Null}"
-                                Foreground="White" Grid.Column="1" Click="Button_SignIn_Click">
+                                Foreground="White" Grid.Column="1" Click="Button_SignIn_Click" IsDefault="True">
+                                
                                 <Button.Content>
                                     <StackPanel Orientation="Horizontal">
                                         <fa:IconBlock Icon="SignInAlt" />
