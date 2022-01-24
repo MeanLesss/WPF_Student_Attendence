@@ -49,7 +49,7 @@ namespace WPF_Student_Attendence
             }
         }
 
-        public void SaveChanges(string searchName,string oldPassword, string newPassword,Teacher t)
+        public void SaveChanges(string searchName,string oldPassword, string newPassword)
         {
             Teacher teacher = Teachers.Find(t => t.Username == searchName && t.Password == oldPassword);
 
@@ -62,6 +62,27 @@ namespace WPF_Student_Attendence
                     for (int i = 0; i <Teachers.Count; i++)
                     {
                         if (Teachers[i].Username == searchName)
+                        {
+                            Teachers[i].Password = newPassword;
+                        }
+                        sw.WriteLine($"{Teachers[i].Username},{Teachers[i].Password},{Teachers[i].Phone}," +
+                                $"{Teachers[i].QuestionNo},{Teachers[i].Answer}");
+                    }
+                }
+            }
+        }
+
+        public void SaveChanges(string newPassword,Teacher teacher)
+        {
+            LoadData();
+            using (var fs = new FileStream(filename, FileMode.Create))
+            {
+                using (var sw = new StreamWriter(fs))
+                {
+                    sw.WriteLine("Username,Password,Phone,QUestionNo,Answer");
+                    for (int i = 0; i < Teachers.Count; i++)
+                    {
+                        if (Teachers[i].Username == teacher.Username)
                         {
                             Teachers[i].Password = newPassword;
                         }

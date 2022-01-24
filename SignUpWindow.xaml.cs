@@ -45,7 +45,7 @@ namespace WPF_Student_Attendence
 
             });
             manageTeacher.SaveData();
-            //DialogResult = DialogResult.Value;
+            MessageBox.Show("Account Created!");
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             Close();

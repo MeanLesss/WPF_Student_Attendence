@@ -132,7 +132,7 @@ namespace WPF_Student_Attendence
             }
             else
             {
-                manageTeacher.SaveChanges(teacher.Username, OldPassword.Password, NewPassword.Password,teacher);
+                manageTeacher.SaveChanges(teacher.Username, OldPassword.Password, NewPassword.Password);
                 teacher.Password = NewPassword.Password;
                 OldPassword.Clear();
                 NewPassword.Clear();
