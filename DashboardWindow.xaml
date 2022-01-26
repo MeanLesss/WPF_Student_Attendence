@@ -7,7 +7,10 @@
         xmlns:local="clr-namespace:WPF_Student_Attendence"
         xmlns:OleDb="clr-namespace:System.Data.OleDb;assembly=System.Data.OleDb" x:Class="WPF_Student_Attendence.DashboardWindow"
         mc:Ignorable="d"
-        Title="DashboardWindow" MinHeight="450" MinWidth="800" MaxHeight="450" MaxWidth="800" WindowStyle="None" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+        Title="DashboardWindow" MinHeight="450" MinWidth="800" MaxHeight="450" MaxWidth="800" 
+        WindowStyle="None" WindowStartupLocation="CenterScreen" 
+    Loaded="Window_Loaded" MouseDown="Window_MouseDown"
+    >
     <Window.DataContext>
         <local:ManageAttendance/>
     </Window.DataContext>

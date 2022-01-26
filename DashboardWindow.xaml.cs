@@ -142,6 +142,14 @@ namespace WPF_Student_Attendence
             }
         }
 
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                this.DragMove();
+            }
+        }
+
         /////I should add the save button/////
 
     }
